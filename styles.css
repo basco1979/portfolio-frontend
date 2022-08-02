@@ -1,0 +1,49 @@
+body{
+  padding: 10px;
+}
+
+#imgHeader{
+  padding: 10px;
+  border-radius: 5%;
+}
+
+#imgPerfil{
+  position: absolute;
+  top: 320px;
+  left: 30px;
+  border-radius: 15%;
+}
+
+#acerca-de{
+  padding-left: 15px;
+}
+
+#node{
+  float: left;
+  margin-right: 5px;
+}
+
+div.experiencia {
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+div.experiencia img.izquierda {
+  float: left;
+  margin-right: 15px;
+}
+
+div.noticia img.derecha {
+  float: right;
+  margin-left: 15px;
+}
+
+div.reset {
+  clear: both;
+}
+.progress { margin-left: auto; margin-right:auto; }
+
+#barra-progreso{
+  width: 60%;
+}
