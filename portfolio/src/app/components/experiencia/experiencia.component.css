@@ -1,0 +1,27 @@
+#experiencia{
+    padding-left: 15px;
+  }
+
+#node{
+    float: left;
+    margin-right: 5px;
+  }
+  div.experiencia {
+    width: 80%;
+    margin: 10px auto;
+    padding: 5px;
+  }
+  
+  div.experiencia img.izquierda {
+    float: left;
+    margin-right: 15px;
+  }
+  
+  div.noticia img.derecha {
+    float: right;
+    margin-left: 15px;
+  }
+  
+  div.reset {
+    clear: both;
+  }

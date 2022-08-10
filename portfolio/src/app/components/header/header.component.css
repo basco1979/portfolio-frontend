@@ -1,0 +1,11 @@
+#imgHeader{
+    padding: 10px;
+    border-radius: 5%;
+  }
+  
+  #imgPerfil{
+    position: absolute;
+    top: 320px;
+    left: 30px;
+    border-radius: 15%;
+  }
