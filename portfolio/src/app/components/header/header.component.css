@@ -1,11 +1,48 @@
-#imgHeader{
-    padding: 10px;
-    border-radius: 5%;
+
+.contenedor{
+  position: relative;
+  margin-bottom: 10px;
+}
+.texto-encima{
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  color: white;
+  z-index: 3;
+ /* animation-duration: 3s;
+  animation-name: slidein;
+*/}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
   }
-  
-  #imgPerfil{
-    position: absolute;
-    top: 320px;
-    left: 30px;
-    border-radius: 15%;
+
+  to {
+    margin-left: 0%;
+    width: 100%;
   }
+}
+
+#img-header{
+  height: 150px;
+  width: 100%;
+  border-radius: 10px;
+display: block;
+}
+
+.fotoPerfil{
+  position: absolute;
+  top: 20%;
+  right: 25%;
+  width: 100px;
+  height: auto;
+  z-index: 2;
+}
+
+@media only screen and (max-width: 760px) {
+  .fotoPerfil{
+    display: none;
+  }
+}

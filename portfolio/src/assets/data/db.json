@@ -1,0 +1,59 @@
+{
+  "profile": {
+    "imgBanner": "../../assets/images/head.png",
+    "imgPerfil": "../../assets/images/perfil.jpg",
+    "nombre": "Sebastián Basconcelo",
+    "descripcion": "Desarrollador Full Stack Jr."
+  },
+
+  "acercade": {
+    "descripcion": "Futuro creador del sitio web más valioso de la Argentina"
+  },
+  "experiencia": [
+    {
+      "img": "../../assets/images/node.png",
+      "titulo": "Backend Developer",
+      "descripcion": "Mantenimiento Sitio Ecommerce en ReactJs + Node JS.",
+      "fecha_inicio": "2021",
+      "fecha_fin": "Actualidad"
+    }
+  ],
+  "educacion": [
+    {
+      "img": "../../assets/images/unlam.jpg",
+      "institucion": "Unlam",
+      "titulo": "Tecnico Universitario en Desarrollo Web",
+      "fecha_inicio": "2017",
+      "fecha_fin": "2021"
+    },
+    {
+      "img": "../../assets/images/escuela.jpg",
+      "institucion": "Dr.Mariano Etchégaray",
+      "titulo": "Bachiller con orientación en Gestión y Administración de Empresas",
+      "fecha_inicio": "1993",
+      "fecha_fin": "1997"
+    }
+  ],
+  "skills": [
+    {
+      "titulo": "Resolucion de Problemas",
+      "cantidad": 60
+    },
+    {
+      "titulo": "Creatividad",
+      "cantidad": 40
+    }
+  ],
+  "proyectos": [
+    {
+      "titulo": "Gaucho Rocket",
+      "link": "github.com/basco1979/gauchorocket",
+      "descripcion": "Sistema pensado para una empresa dedicada a gestionar viajes espaciales, permitiendo al usuario reservar, comprar y realizar el check-in. Con un usuario administrador con la posibilidad de realizar facturaciones y reportes.(PHP)"
+    },
+    {
+      "titulo": "Taller Bacaro",
+      "link": "github.com/basco1979/taller-bacaro",
+      "descripcion": "Sistema que realiza ordenes de reparacion y facturación, pensado para ser utilizado por empleados de un taller mecanico.(JAVA)"
+    }
+  ]
+}

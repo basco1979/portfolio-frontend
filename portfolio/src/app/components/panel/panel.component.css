@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&display=swap');
+
+.texto-debajo{
+    display: block;
+    color: black !important;
+    margin-top: 5px;
+    text-align: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+
+}
+@media only screen and (max-width: 760px) {
+.menu-resp{
+    font-size: 40px !important;
+}
+}
