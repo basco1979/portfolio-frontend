@@ -1,18 +1,213 @@
 <app-header></app-header> <app-menu></app-menu>
 <section>
   <div class="card mb-3 ml-4" id="educacion">
+    <i
+      class="fa fa-plus agregar"
+      *ngIf="logueado()"
+      (click)="openModalCreate(createProfileModal)"
+    ></i>
+
     <h1>Educacion</h1>
-    <div class="experiencia">
-      <img
-        class="izquierda"
-        src="../../assets/images/unlam.jpg"
-        width="60px"
-        height="40px"
-      />
-      <aside><h2>Unlam</h2></aside>
-      <aside>Tecnico universitario en desarrollo web</aside>
-      <aside>2018-2021</aside>
+    <div class="experiencia" *ngFor="let estudio of estudios">
+      <img class="izquierda" [src]="estudio.img" width="60px" height="40px" />
+
+      <i
+        class="fa fa-pencil editar"
+        *ngIf="logueado()"
+        (click)="openModal(editProfileModal, estudio)"
+      ></i>
+      <i
+        class="fa fa-trash editar"
+        *ngIf="logueado()"
+        (click)="eliminar(estudio.id)"
+      ></i>
+      <aside>
+        <h2>{{ estudio.institucion }}</h2>
+      </aside>
+      <aside>{{ estudio.titulo }}</aside>
+
+      <aside>Desde : {{ estudio.fecha_inicio }}</aside>
+      <aside>Hasta: {{ estudio.fecha_fin }}</aside>
       <div class="reset"></div>
     </div>
   </div>
 </section>
+
+<ng-template #editProfileModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="editProfileLabel">Editar</h5>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmitEdit()">
+      <div class="form-group row">
+        <label for="id" class="col-sm-4 col-form-label">Id</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="id"
+            id="id"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="institucion" class="col-sm-4 col-form-label"
+          >Institucion</label
+        >
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="institucion"
+            id="institucion"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="titulo" class="col-sm-4 col-form-label">Titulo</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="titulo"
+            id="titulo"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="fecha_inicio" class="col-sm-4 col-form-label"
+          >fecha_inicio</label
+        >
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="fecha_inicio"
+            id="fecha_inicio"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="fecha_fin" class="col-sm-4 col-form-label">fecha_fin</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="fecha_fin"
+            id="fecha_fin"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modal.dismiss()"
+        >
+          Cerrar
+        </button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #createProfileModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="createProfileLabel">Cargar Nueva Educación</h5>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="createProfileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <!--   <label for="imagen" class="col-sm-4 col-form-label">Imagen</label>
+        <div class="col-sm-8">
+          <input
+            type="file"
+            accept="image/*"
+            class="form-control"
+            formControlName="img"
+            id="img"
+            ((change)="onSelectFile($event")
+          />
+        </div>-->
+      </div>
+      <div class="form-group row">
+        <label for="institucion" class="col-sm-4 col-form-label"
+          >Institucion</label
+        >
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="institucion"
+            id="institucion"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="titulo" class="col-sm-4 col-form-label">Titulo</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="titulo"
+            id="titulo"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="fecha_inicio" class="col-sm-4 col-form-label"
+          >fecha_inicio</label
+        >
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="fecha_inicio"
+            id="fecha_inicio"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="fecha_fin" class="col-sm-4 col-form-label">fecha_fin</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="fecha_fin"
+            id="fecha_fin"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modal.dismiss()"
+        >
+          Cerrar
+        </button>
+        <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

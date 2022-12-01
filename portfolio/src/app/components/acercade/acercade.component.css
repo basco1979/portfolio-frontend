@@ -2,3 +2,14 @@
     padding-left: 15px;
   }
   
+.agregar{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.editar{
+  position: absolute;
+  top: 35px;
+  right: 10px;
+}

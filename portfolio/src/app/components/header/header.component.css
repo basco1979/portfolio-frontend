@@ -13,6 +13,12 @@
   animation-name: slidein;
 */}
 
+.editarTexto{
+  margin-right: -40px;
+  float: right;
+  font-size: 20px;
+}
+
 @keyframes slidein {
   from {
     margin-left: 100%;

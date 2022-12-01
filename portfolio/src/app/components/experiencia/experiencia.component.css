@@ -25,3 +25,16 @@
   div.reset {
     clear: both;
   }
+
+  .agregar{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 25px;
+  }
+  .editar{
+    margin-right: 10px;
+    float: right;
+  }
+  
+  

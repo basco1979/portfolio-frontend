@@ -21,7 +21,16 @@
       ></a>
     </li>
     <li class="list-group-item">
-      <a href="/login"><i class="fas fa-user-secret redes-icono"></i></a>
+      <a href="/login"
+        ><i class="fas fa-user-secret redes-icono" *ngIf="!logueado()"></i
+      ></a>
+    </li>
+    <li class="list-group-item">
+      <i
+        class="fa fa-sign-out redes-icono"
+        *ngIf="logueado()"
+        (click)="logout()"
+      ></i>
     </li>
   </ul>
 </div>

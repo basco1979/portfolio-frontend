@@ -8,6 +8,7 @@ import { SkillsComponent } from '../components/skills/skills.component';
 import { ProyectosComponent } from '../components/proyectos/proyectos.component';
 import { LoginComponent } from '../components/login/login.component';
 import { PanelComponent } from '../components/panel/panel.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'acercade', pathMatch: 'full'},
@@ -17,14 +18,14 @@ const routes: Routes = [
   {path: "skills", component: SkillsComponent},
   {path: "proyectos", component: ProyectosComponent},
   {path: "login", component: LoginComponent},
-  {path: "panel", component: PanelComponent},
+  {path: "panel", component: PanelComponent, canActivate: [AuthGuard]},
 ]
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes, {enableTracing: true}),
+    RouterModule.forRoot(routes, {enableTracing: true, onSameUrlNavigation: 'reload' }),
   ],
   exports: [RouterModule],
 })

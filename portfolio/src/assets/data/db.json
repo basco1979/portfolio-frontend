@@ -9,7 +9,7 @@
   "acercade": {
     "descripcion": "Futuro creador del sitio web más valioso de la Argentina"
   },
-  "experiencia": [
+  "experiencias": [
     {
       "img": "../../assets/images/node.png",
       "titulo": "Backend Developer",
@@ -36,12 +36,22 @@
   ],
   "skills": [
     {
-      "titulo": "Resolucion de Problemas",
-      "cantidad": 60
+      "id": 1,
+      "titulo": "HTML",
+      "cantidad": 85,
+      "color": "bg-success"
     },
     {
-      "titulo": "Creatividad",
-      "cantidad": 40
+      "id": 2,
+      "titulo": "Javascript",
+      "cantidad": 40,
+      "color": "bg-danger"
+    },
+    {
+      "id": 3,
+      "titulo": "CSS",
+      "cantidad": 60,
+      "color": "bg-primary"
     }
   ],
   "proyectos": [

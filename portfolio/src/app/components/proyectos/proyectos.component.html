@@ -1,9 +1,24 @@
 <app-header></app-header> <app-menu></app-menu>
 <section>
   <div class="card mb-3 ml-4" id="proyectos">
+    <i
+      class="fa fa-plus agregar"
+      *ngIf="logueado()"
+      (click)="openModalCreate(createProfileModal)"
+    ></i>
     <h1>Proyectos</h1>
     <div *ngFor="let proyecto of proyectos">
       <div class="ms-4">
+        <i
+          class="fa fa-pencil editar"
+          *ngIf="logueado()"
+          (click)="openModal(editProfileModal, proyecto)"
+        ></i>
+        <i
+          class="fa fa-trash editar"
+          *ngIf="logueado()"
+          (click)="eliminar(proyecto.id)"
+        ></i>
         <h2>
           <a [href]="proyecto.link" style="text-decoration: none">{{
             proyecto.titulo
@@ -17,3 +32,144 @@
   </div>
   <hr />
 </section>
+
+<ng-template #editProfileModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="editProfileLabel">Editar</h5>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmitEdit()">
+      <div class="form-group row">
+        <label for="id" class="col-sm-4 col-form-label">Id</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="id"
+            id="id"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="titulo" class="col-sm-4 col-form-label">Titulo</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="titulo"
+            id="titulo"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="descripcion" class="col-sm-4 col-form-label"
+          >Descripcion</label
+        >
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="descripcion"
+            id="descripcion"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="link" class="col-sm-4 col-form-label">Link</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="link"
+            id="link"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modal.dismiss()"
+        >
+          Cerrar
+        </button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #createProfileModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="createProfileLabel">Cargar Nuevo Proyecto</h5>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="createProfileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="titulo" class="col-sm-4 col-form-label">Titulo</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="titulo"
+            id="titulo"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="descripcion" class="col-sm-4 col-form-label"
+          >Descripción</label
+        >
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="descripcion"
+            id="descripcion"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="link" class="col-sm-4 col-form-label">Link</label>
+        <div class="col-sm-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="link"
+            id="link"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modal.dismiss()"
+        >
+          Cerrar
+        </button>
+        <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

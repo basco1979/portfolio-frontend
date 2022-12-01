@@ -4,6 +4,7 @@ import { AppRoutingModuleTsModule } from './app-routing.module.ts/app-routing.mo
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,7 +15,6 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -26,7 +26,13 @@ import { EditarSkillsComponent } from './components/modals/editar-skills/editar-
 import { EditarProyectosComponent } from './components/modals/editar-proyectos/editar-proyectos.component';
 import { BotonlogoutComponent } from './components/botonlogout/botonlogout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import {
+  NgxAwesomePopupModule,
+  ConfirmBoxConfigModule
+} from '@costlydeveloper/ngx-awesome-popup';
 
 
 @NgModule({
@@ -55,9 +61,15 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FontAwesomeModule,
     AppRoutingModuleTsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
+    ConfirmBoxConfigModule.forRoot() // Essential, mandatory confirm box module.
+    
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {constructor(library: FaIconLibrary) {

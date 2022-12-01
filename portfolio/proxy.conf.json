@@ -1,0 +1,7 @@
+{
+  "/": {
+    "target": "https://freeimage.host/api/1/upload",
+    "secure": true,
+    "changeOrigin": true
+  }
+}
