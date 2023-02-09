@@ -49,12 +49,22 @@ export class ExperienciaComponent implements OnInit {
   }
   
     getDatos(): void{
-      this.experienciaservice.obtenerDatosExperiencia().subscribe(data => {
+      this.experienciaservice.obtenerDatosExperiencia()
+      
+      /*.subscribe(data => {
         this.experiencias = data;
         },
       error => {
         console.log(error);
-      });
+      });*/
+
+
+      .subscribe({
+        next: (data) => {
+          this.experiencias = data;
+          },
+        error: error => console.log(error)
+     });
 }
 
 
@@ -93,6 +103,8 @@ openModal(targetModal, user) {
   this.modalService.dismissAll();
   var res = this.editProfileForm.getRawValue();
    this.experienciaservice.modificarDatosExperiencia(res.id, res)
+   this.getDatos()
+
   await this.reload();
 }
 async onSubmit() {
@@ -100,6 +112,8 @@ this.modalService.dismissAll();
 var res = this.createProfileForm.getRawValue();
 
 this.experienciaservice.crearExperiencia(res)
+this.getDatos()
+
 this.reload()
 } 
 
@@ -119,6 +133,7 @@ confirmBox.openConfirmBox$().subscribe(resp => {
   // IConfirmBoxPublicResponse
   if(resp.clickedButtonID == "si") {
     this.experienciaservice.eliminarDatosExperiencia(id); 
+    this.getDatos()
     
 }
 this.reload();}

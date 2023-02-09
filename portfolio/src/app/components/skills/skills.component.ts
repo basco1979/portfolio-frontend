@@ -85,6 +85,8 @@ export class SkillsComponent implements OnInit {
     var res = this.editProfileForm.getRawValue();
     console.log(res.color)
      this.skillservice.modificarDatosHabilidad(res.id, res)
+    this.getDatos()
+
     await this.reload();
   }
   async onSubmit() {
@@ -92,6 +94,8 @@ export class SkillsComponent implements OnInit {
   var res = this.createProfileForm.getRawValue();
   
   this.skillservice.crearHabilidad(res)
+  this.getDatos()
+
   this.reload()
   } 
   
@@ -111,6 +115,7 @@ export class SkillsComponent implements OnInit {
     // IConfirmBoxPublicResponse
     if(resp.clickedButtonID == "si") {
       this.skillservice.eliminarDatosHabilidad(id); 
+    this.getDatos()
       
   }
   this.reload();}

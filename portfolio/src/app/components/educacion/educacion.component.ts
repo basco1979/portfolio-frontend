@@ -59,8 +59,23 @@ export class EducacionComponent implements OnInit {
   }
 
   getDatos(): void{
-    this.educacionservice.obtenerDatosEducacion().subscribe(data => {this.estudios = data})
-  }
+    this.educacionservice.obtenerDatosEducacion()
+    
+    /*.subscribe(data => {
+      this.experiencias = data;
+      },
+    error => {
+      console.log(error);
+    });*/
+
+
+    .subscribe({
+      next: (data) => {
+        this.estudios = data;
+        },
+      error: error => console.log(error)
+   });
+}
 
   logueado() : boolean{
     return this.authService.logIn
@@ -92,6 +107,8 @@ export class EducacionComponent implements OnInit {
     this.modalService.dismissAll();
     var res = this.editProfileForm.getRawValue();
      this.educacionservice.modificarDatosEducacion(res.id, res)
+  this.getDatos()
+
     await this.reload();
 }
  async onSubmit() {
@@ -99,7 +116,8 @@ export class EducacionComponent implements OnInit {
   var res = this.createProfileForm.getRawValue();
   
   this.educacionservice.crearEducacion(res)
-  this.reload()
+  this.getDatos()
+  await this.reload()
 } 
 
 eliminar(id:number) {
@@ -118,6 +136,7 @@ eliminar(id:number) {
     // IConfirmBoxPublicResponse
     if(resp.clickedButtonID == "si") {
       this.educacionservice.eliminarDatosEducacion(id); 
+      this.getDatos()
       
   }
   this.reload();}

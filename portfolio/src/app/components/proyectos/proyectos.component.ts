@@ -83,6 +83,8 @@ openModal(targetModal, user) {
   this.modalService.dismissAll();
   var res = this.editProfileForm.getRawValue();
    this.proyectoservice.modificarDatosProyecto(res.id, res)
+   this.getDatos()
+
   await this.reload();
 }
 async onSubmit() {
@@ -90,6 +92,8 @@ this.modalService.dismissAll();
 var res = this.createProfileForm.getRawValue();
 
 this.proyectoservice.crearProyecto(res)
+this.getDatos()
+
 this.reload()
 } 
 
@@ -109,6 +113,7 @@ confirmBox.openConfirmBox$().subscribe(resp => {
   // IConfirmBoxPublicResponse
   if(resp.clickedButtonID == "si") {
     this.proyectoservice.eliminarDatosProyecto(id); 
+    this.getDatos()
     
 }
 this.reload();}
